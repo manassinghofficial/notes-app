@@ -1,6 +1,18 @@
 const addBtn = document.querySelector("#addBtn");
 const main = document.querySelector("#main");
 
+
+const saveNotes = () => {
+  const notes = document.querySelectorAll(".note textarea");
+  const data = [];
+  console.log(notes)
+   for (let element of notes) {
+        data.push(element.value)
+  }
+  // console.log(data)
+  localStorage.setItem('notes', JSON.stringify(data))
+};
+
 addBtn.addEventListener("click", function () {
   addNote();
 });
@@ -21,19 +33,22 @@ const addNote = () => {
        <img class="save" src="svg/save.svg"/>
        <img class="delete"src="svg/delete.svg"/>
     </div>
+      <textarea></textarea>
     `;
-    main.appendChild(note)
+    
+    note.querySelector(".delete").addEventListener("click", function () {
+      note.remove();
+    });
+    
+    note.querySelector(".save").addEventListener("click", function () {
+      saveNotes();
+    });
 
-    note.querySelector('.delete').addEventListener('click',function(){
-        note.remove()
-    })
+    
+    main.appendChild(note);
+    saveNotes();
 
-    note.querySelector('.save').addEventListener('click',function(){
-        saveNotes()
-    })
+
 };
 
-const saveNotes = () =>{
-    const notes = document.querySelectorAll('.note textarea')
 
-}

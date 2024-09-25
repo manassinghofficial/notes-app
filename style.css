@@ -37,6 +37,7 @@
     padding: 5px;
     display: flex;
     justify-content: end;
+    user-select: none;
 }
 .tool img{
     width: 30px;
