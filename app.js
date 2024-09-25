@@ -10,12 +10,12 @@ const saveNotes = () => {
     data.push(element.value);
   }
   
-  if(data.length == 0){
-    localStorage.removeItem('notes')
-  }else{// Save data to localStorage
-    localStorage.setItem('notes',JSON.stringify(data))
+  // Save to localStorage or remove it if no notes are present
+  if (data.length === 0) {
+    localStorage.removeItem('notes');
+  } else {
+    localStorage.setItem('notes', JSON.stringify(data));
   }
-
 };
 
 addBtn.addEventListener("click", function () {
@@ -64,10 +64,4 @@ const addNote = (text = "") => {
   for (const element of lsNotes) {
     addNote(element); // Pass the saved text to the addNote function
   }
-  if(lsNotes.length ===0){
-    localStorage.removeItem('notes')
-  }else{
-    addNote()
-  }
-}
-)();
+})();
